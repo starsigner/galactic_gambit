@@ -2,7 +2,7 @@
 import os
 from database import *
 
-# Clear terminal screen
+# Clear Terminal Screen
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -12,7 +12,7 @@ create_user_table(c)
 
 # Main Menu
 def mainMenu():
-    print("\n")
+    printStarDesign()
     print("Games Table [0]\n")
     print("Help Desk [1]\n")
     print("Celestial Bar [2]\n")
@@ -23,6 +23,10 @@ print("Welcome to the Galaxia Casino, located between exoplanet-544 and wormhole
 print("> Make an account (enter 0)\n")
 print("> Login (enter 1)\n")
 userLogin = input("")
+
+# Print Star Design Pattern
+def printStarDesign():
+    print("\n☆⋆⭒⋆✵⋆★⋆☆⋆⭒⋆✵⋆★\n")
 
 # Create Account 
 if (userLogin == "0"):

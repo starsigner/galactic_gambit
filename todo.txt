@@ -1,0 +1,18 @@
+Handle: 
+    Terminal Transitions
+    Names/Intros/Creative Inputs 
+    Clarify Layout
+    Create Account
+        Check for duplicate usernames 
+        Username validity
+        Secure Password Screen
+        Password validity 
+    Login 
+        Check for existing user
+        Lock user out if they try to login too much
+        Prompt them to make an account if user doesn't exist 
+Understand SQLlite3 Code 
+Better Formatted Database  
+
+
+
