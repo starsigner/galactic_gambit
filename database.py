@@ -15,6 +15,13 @@ def create_user_table(c):
     ''')
     c.commit()
 
+def user_exists(c, username):
+    cursor = c.cursor()
+    cursor.execute('''
+        SELECT * FROM users WHERE username = ?
+    ''', (username,))
+    return cursor.fetchone() is not None
+
 def add_user(c, username, password):
     cursor = c.cursor()
     cursor.execute('''
@@ -22,3 +29,11 @@ def add_user(c, username, password):
     ''', (username, password))
     c.commit()
 
+def clear_database(c):
+    cursor = c.cursor()
+    cursor.execute('''
+        DELETE FROM users
+    ''')
+    c.commit()
+
+    
