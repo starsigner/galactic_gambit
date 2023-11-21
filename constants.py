@@ -1,4 +1,5 @@
-# errors messages; constants 
+# main.py 
+
 MIN_USERNAME_LEN = 1
 MAX_USERNAME_LEN = 20
 MIN_PASS_LEN = 8

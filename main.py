@@ -1,9 +1,8 @@
-
 import os
 from stdiomask import getpass
 from database import *
 from constants import *
-
+from menu import *
 
 # clear terminal screen
 def clear_screen():
@@ -15,6 +14,9 @@ create_user_table(c)
 
 # initalize stack for nav/return 
 function_stack = []
+
+# initialize current user to null
+current_username = None
 
 # General input handling function
 def get_input(prompt):
@@ -38,14 +40,42 @@ def handle_none_input(func):
 def printStarDesign():
     print("☆⋆⭒⋆✵⋆★⋆☆⋆⭒⋆✵⋆★\n")
 
+@handle_none_input
+def userStats():
+    printUserStats(current_username)
+
+def gamesTable():
+    print("gamesTable")
+
+def helpDesk():
+    print("helpDesk")
+
+def celestialBar():
+    print("Celestial Bar")
+
 # Main Menu
 @handle_none_input
 def mainMenu():
+    selectionOptions = {
+        '0': gamesTable,
+        '1': helpDesk,
+        '2': celestialBar,
+        '3': userStats
+    }
+
     print("Games Table [0]\n")
     print("Help Desk [1]\n")
     print("Celestial Bar [2]\n")
     print("User Stats [3]\n")
-    function_stack.append(login)
+
+    userSelection = get_input("Select an option: ")
+    function_stack.append(mainMenu)
+
+    if userSelection in selectionOptions:
+        selectionOptions[userSelection]()
+        get_input("esc to return")
+    else:
+        print("Invalid option")
    
 def errorHandleUsername(username):
    # duplicate username 
@@ -85,6 +115,7 @@ def errorHandlePassword(password):
 # Create Account 
 @handle_none_input
 def createAccount():
+        global current_username 
         username = get_input("What should we call you? ")
         errorHandleUsername(username)
         password = getpass('Welcome {}! Please enter a password to keep your account safe from Void Vandals. \n Choose password: '.format(username))
@@ -92,24 +123,27 @@ def createAccount():
             password = getpass('Choose password: '.format(username))
         clear_screen()
         add_user(c, username, password)
+        current_username = username
         printStarDesign()
         print("\nGreat! You've been entered into the galactic database. ['Yes' to continue]\n")
         print("You're all set {}. Head to the poker table, or grab some refreshments.".format(username))
-        function_stack.append(createAccount)
         mainMenu()
 
 @handle_none_input
 def login():
+        global current_username
         loginUser = get_input("Username: ")
         loginPassword = getpass("Password: ")
-        function_stack.append(login)
         if check_credentials(c, loginUser, loginPassword):
             print(SUCCESSFUL_LOGIN)
+            current_username = loginUser
         else:
             print(INCORRECT_LOGIN)
             login()
+        mainMenu()
 
 # Landing Page
+@handle_none_input
 def landing():
     print("\nWelcome to the Galactic Gambit, your local interstellar casino. To start playing, choose an option below:\n")
     printStarDesign()

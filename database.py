@@ -29,7 +29,6 @@ def add_user(c, username, password):
     ''', (username, password))
     c.commit()
 
-
 def check_credentials(c, username, password):
     cursor = c.cursor()
     cursor.execute('''
