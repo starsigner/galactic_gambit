@@ -3,9 +3,6 @@ Handle:
     Names/Intros/Creative Inputs 
     Clarify Layout
     Create Account
-        Username validity
-        Secure Password Screen
-        Password validity 
     Login 
         Lock user out if they try to login too much
         Prompt them to make an account if user doesn't exist 

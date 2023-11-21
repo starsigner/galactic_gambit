@@ -29,6 +29,14 @@ def add_user(c, username, password):
     ''', (username, password))
     c.commit()
 
+
+def check_credentials(c, username, password):
+    cursor = c.cursor()
+    cursor.execute('''
+        SELECT * FROM users WHERE username = ? AND password = ?
+    ''', (username, password))
+    return cursor.fetchone() is not None
+
 def clear_database(c):
     cursor = c.cursor()
     cursor.execute('''
@@ -36,4 +44,3 @@ def clear_database(c):
     ''')
     c.commit()
 
-    
