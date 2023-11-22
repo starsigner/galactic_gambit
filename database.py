@@ -10,7 +10,8 @@ def create_user_table(c):
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY,
             username TEXT UNIQUE,
-            password TEXT
+            password TEXT,
+            astrobucks INTEGER
         )
     ''')
     c.commit()
@@ -35,6 +36,21 @@ def check_credentials(c, username, password):
         SELECT * FROM users WHERE username = ? AND password = ?
     ''', (username, password))
     return cursor.fetchone() is not None
+
+def update_user_astrobucks(c, username, new_astrobucks):
+    cursor = c.cursor()
+    cursor.execute('''
+        UPDATE users SET astrobucks = ? WHERE username = ?
+    ''', (new_astrobucks, username))
+    c.commit()
+
+def get_user_astrobucks(c, username):
+    cursor = c.cursor()
+    cursor.execute('''
+        SELECT astrobucks FROM users WHERE username = ?
+    ''', (username,))
+    result = cursor.fetchone()
+    return result[0] if result is not None else None
 
 def clear_database(c):
     cursor = c.cursor()

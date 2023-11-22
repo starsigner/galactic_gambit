@@ -2,15 +2,14 @@ import os
 from stdiomask import getpass
 from database import *
 from constants import *
+from utils import *
 from menu import *
 
 # clear terminal screen
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-# initalize database 
-c = connect_to_db()
-create_user_table(c)
+# c = get_database_connection()
 
 # initalize stack for nav/return 
 function_stack = []
