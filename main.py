@@ -1,43 +1,12 @@
-import os
 from stdiomask import getpass
 from database import *
 from constants import *
 from utils import *
 from menu import *
+from validation import *
 
-# clear terminal screen
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-# c = get_database_connection()
-
-# initalize stack for nav/return 
-function_stack = []
-
-# initialize current user to null
+# initialize current user 
 current_username = None
-
-# General input handling function
-def get_input(prompt):
-    user_input = input(prompt)
-    if (user_input.lower() == '\x1b'):    
-        popped_function = function_stack.pop()
-        popped_function()
-        return None 
-    else:
-        return user_input
-    
-def handle_none_input(func):
-    def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
-        if result is None:
-            return
-        return result
-    return wrapper
-
-# star pattern 
-def printStarDesign():
-    print("☆⋆⭒⋆✵⋆★⋆☆⋆⭒⋆✵⋆★\n")
 
 @handle_none_input
 def userStats():
@@ -75,7 +44,7 @@ def mainMenu():
         get_input("esc to return")
     else:
         print("Invalid option")
-   
+
 def errorHandleUsername(username):
    # duplicate username 
    if user_exists(c, username):
@@ -89,29 +58,6 @@ def errorHandleUsername(username):
        print(MAX_USERNAME_ERROR)
        createAccount()
 
-def has_symbol(password):
-    symbol_characters = "!@#$%^&*()-_=+[]{}|;:'\",.<>/?`~"
-    
-    for char in password:
-        if char in symbol_characters:
-            return True
-        
-    return False
-
-def errorHandlePassword(password):
-   # duplicate username check
-   if len(password) < MIN_PASS_LEN:
-       print(MIN_PASSWORD_ERROR)
-       return True
-   if (not has_symbol(password)):
-       print(SPECIAL_CHAR_PASSWORD_ERROR)
-       return True
-   if any(char.isdigit() for char in password) == False:
-       print(NUMERIC_CHAR_PASSWORD_ERROR)
-       return True
-   return False
-
-# Create Account 
 @handle_none_input
 def createAccount():
         global current_username 
@@ -123,7 +69,7 @@ def createAccount():
         clear_screen()
         add_user(c, username, password)
         current_username = username
-        printStarDesign()
+        printStarPattern()
         print("\nGreat! You've been entered into the galactic database. ['Yes' to continue]\n")
         print("You're all set {}. Head to the poker table, or grab some refreshments.".format(username))
         mainMenu()
@@ -145,7 +91,7 @@ def login():
 @handle_none_input
 def landing():
     print("\nWelcome to the Galactic Gambit, your local interstellar casino. To start playing, choose an option below:\n")
-    printStarDesign()
+    printStarPattern()
     print("> Make an account (enter 0)\n")
     print("> Login (enter 1)\n")
     print("☆⋆⭒⋆✵⋆★⋆☆⋆⭒⋆✵⋆★\n")
