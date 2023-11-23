@@ -4,6 +4,6 @@ from utils import *
 
 
 def printUserStats(username):
-    print((user_exists(c, username)))
+    update_user_astrobucks(c, username, 4)
+    print(get_user_astrobucks(c, username))
 
-    

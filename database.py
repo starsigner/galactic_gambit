@@ -11,7 +11,7 @@ def create_user_table(c):
             id INTEGER PRIMARY KEY,
             username TEXT UNIQUE,
             password TEXT,
-            astrobucks INTEGER
+            astrobucks INT
         )
     ''')
     c.commit()
@@ -23,11 +23,11 @@ def user_exists(c, username):
     ''', (username,))
     return cursor.fetchone() is not None
 
-def add_user(c, username, password):
+def add_user(c, username, password, astrobucks):
     cursor = c.cursor()
     cursor.execute('''
-        INSERT INTO users (username, password) VALUES (?, ?)
-    ''', (username, password))
+        INSERT INTO users (username, password, astrobucks) VALUES (?, ?, ?)
+    ''', (username, password, astrobucks))
     c.commit()
 
 def check_credentials(c, username, password):

@@ -15,10 +15,9 @@ from constants import *
 #        createAccount()
 
 def has_symbol(password):
-    symbol_characters = "!@#$%^&*()-_=+[]{}|;:'\",.<>/?`~"
     
     for char in password:
-        if char in symbol_characters:
+        if char in SYMBOL_CHARACTERS_LIST:
             return True
         
     return False
@@ -35,3 +34,4 @@ def errorHandlePassword(password):
        print(NUMERIC_CHAR_PASSWORD_ERROR)
        return True
    return False
+

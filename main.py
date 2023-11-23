@@ -67,7 +67,7 @@ def createAccount():
         while (errorHandlePassword(password)):
             password = getpass('Choose password: '.format(username))
         clear_screen()
-        add_user(c, username, password)
+        add_user(c, username, password, 0)
         current_username = username
         printStarPattern()
         print("\nGreat! You've been entered into the galactic database. ['Yes' to continue]\n")
@@ -77,14 +77,17 @@ def createAccount():
 @handle_none_input
 def login():
         global current_username
+
         loginUser = get_input("Username: ")
         loginPassword = getpass("Password: ")
+
         if check_credentials(c, loginUser, loginPassword):
             print(SUCCESSFUL_LOGIN)
             current_username = loginUser
         else:
             print(INCORRECT_LOGIN)
             login()
+            
         mainMenu()
 
 # Landing Page
