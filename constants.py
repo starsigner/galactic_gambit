@@ -14,3 +14,11 @@ NUMERIC_CHAR_PASSWORD_ERROR = "Your password must include at least one numeric c
 SUCCESSFUL_LOGIN = "Successfully logged in."
 INCORRECT_LOGIN = "Incorrect login. Please try again. Enter 0 to return."
 
+# menu.py
+
+ASTROBUCKS = "astrobucks"
+LIFETIME_EARNINGS = "lifetimeEarnings"
+DATE_JOINED = "dateJoined"
+
+
+

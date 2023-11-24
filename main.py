@@ -4,13 +4,14 @@ from constants import *
 from utils import *
 from menu import *
 from validation import *
+from datetime import datetime
 
 # initialize current user 
 current_username = None
 
 @handle_none_input
-def userStats():
-    printUserStats(current_username)
+def userFile():
+    printUserFile(current_username)
 
 def gamesTable():
     print("gamesTable")
@@ -28,13 +29,13 @@ def mainMenu():
         '0': gamesTable,
         '1': helpDesk,
         '2': celestialBar,
-        '3': userStats
+        '3': userFile
     }
 
     print("Games Table [0]\n")
     print("Help Desk [1]\n")
     print("Celestial Bar [2]\n")
-    print("User Stats [3]\n")
+    print("User File [3]\n")
 
     userSelection = get_input("Select an option: ")
     function_stack.append(mainMenu)
@@ -67,7 +68,7 @@ def createAccount():
         while (errorHandlePassword(password)):
             password = getpass('Choose password: '.format(username))
         clear_screen()
-        add_user(c, username, password, 0)
+        add_user(c, username, password, datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         current_username = username
         printStarPattern()
         print("\nGreat! You've been entered into the galactic database. ['Yes' to continue]\n")
