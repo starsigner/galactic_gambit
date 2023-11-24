@@ -19,6 +19,7 @@ INCORRECT_LOGIN = "Incorrect login. Please try again. Enter 0 to return."
 ASTROBUCKS = "astrobucks"
 LIFETIME_EARNINGS = "lifetimeEarnings"
 DATE_JOINED = "dateJoined"
-
+HELP_DESK_INTRO = "Hello. I am Pulse, gambit's AI assistant for all of your galactic needs. What would you like to learn more about?"
+HELP_OPTIONS = "Rules [0] \nOpponent Profiles [1] \nLevel Hierarchy [2] \nGambit Lore [3]"
 
 

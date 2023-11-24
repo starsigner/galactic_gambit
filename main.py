@@ -17,7 +17,7 @@ def gamesTable():
     print("gamesTable")
 
 def helpDesk():
-    print("helpDesk")
+    printHelpDesk()
 
 def celestialBar():
     print("Celestial Bar")
@@ -68,7 +68,7 @@ def createAccount():
         while (errorHandlePassword(password)):
             password = getpass('Choose password: '.format(username))
         clear_screen()
-        add_user(c, username, password, datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        add_user(c, username, password, datetime.now().strftime('%Y-%m-%d'))
         current_username = username
         printStarPattern()
         print("\nGreat! You've been entered into the galactic database. ['Yes' to continue]\n")
