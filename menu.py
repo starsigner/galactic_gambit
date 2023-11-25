@@ -63,10 +63,19 @@ def enterCelestialBar(username):
         drink_name, drink_price = CELESTIAL_BAR_MENU_OPTIONS[num]
         print(f"{drink_name}: {drink_price} AB [{keyboard_count_str}]")
         keyboard_count += 1
-    # function_stack.append(enterCelestialBar(username))
+    function_stack.append(enterCelestialBar)
     chosen_drink = get_input("What will you be having tonight?")
-    chosenDrinkEffects(CELESTIAL_BAR_MENU_OPTIONS[random_drinks[int(chosen_drink)]])
+    buyDrink(CELESTIAL_BAR_MENU_OPTIONS[random_drinks[int(chosen_drink)]], username)
 
 @handle_none_input
-def chosenDrinkEffects(drink):
-    print(drink)
+def buyDrink(drink, username):
+    update_user_astrobucks(c, username, 500)
+    curr_astrobucks = get_user_data(c, ASTROBUCKS, username)
+    drink_price = drink[1]
+    if (curr_astrobucks < drink_price):
+        print("NOT ENOUGH FUNDS")
+    else:
+        print("DRINKING")
+        update_user_astrobucks(c, username, curr_astrobucks - drink_price)
+        print(get_user_data(c, ASTROBUCKS, username))
+    get_input("esc to return")
