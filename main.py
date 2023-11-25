@@ -20,7 +20,7 @@ def helpDesk():
     printHelpDesk()
 
 def celestialBar():
-    print("Celestial Bar")
+    enterCelestialBar(current_username)
 
 # Main Menu
 @handle_none_input

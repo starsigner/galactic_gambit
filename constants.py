@@ -22,4 +22,18 @@ DATE_JOINED = "dateJoined"
 HELP_DESK_INTRO = "Hello. I am Pulse, gambit's AI assistant for all of your galactic needs. What would you like to learn more about?"
 HELP_OPTIONS = "Rules [0] \nOpponent Profiles [1] \nLevel Hierarchy [2] \nGambit Lore [3]"
 
-
+CELESTIAL_BAR_MENU_OPTIONS = [
+    ["Nebula Nectar", 100, "Oooh, delicious"],
+    ["Infinity Iced Tea", 150],
+    ["Exoplanet Elixir", 200],
+    ["Meteorite Mule", 50],
+    ["Pluto's Punch", 50],
+    ["Space-Time Sour", 100],
+    ["Lunar Lemonade", 100],
+    ["Hubble Bubble Tea", 20],
+    ["Milky Way Martini", 100],
+    ["Starlight Sangria", 300],
+    ["Aurora Aperitif", 100],
+    ["Wormhole Whiskey", 150],
+    ["Black Hole Brew", 150],
+]
