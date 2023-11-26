@@ -23,7 +23,7 @@ HELP_DESK_INTRO = "Hello. I am Pulse, gambit's AI assistant for all of your gala
 HELP_OPTIONS = "Rules [0] \nOpponent Profiles [1] \nLevel Hierarchy [2] \nGambit Lore [3]"
 
 CELESTIAL_BAR_MENU_OPTIONS = [
-    ["Nebula Nectar", 100, "Oooh, delicious"],
+    ["Nebula Nectar", 100],
     ["Infinity Iced Tea", 150],
     ["Exoplanet Elixir", 200],
     ["Meteorite Mule", 50],

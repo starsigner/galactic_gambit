@@ -3,6 +3,8 @@ from constants import *
 from utils import *
 import random
 
+# USER PROFILE  
+# prints the user's profile with date joined, lifetime earnings, astrobucks, awards won, and current level
 def printUserFile(username):
     print("{}'s FILE".format(username).upper())
     printStarPattern()
@@ -10,9 +12,10 @@ def printUserFile(username):
     print("Lifetime Earnings: {} \n".format(get_user_data(c, LIFETIME_EARNINGS, username)))
     update_user_astrobucks(c, username, 4)
     print("Astrobucks: {} \n".format(get_user_data(c, ASTROBUCKS, username)))
-    print("Level: ")
     print("Awards won: ")
     print("DELETE ACCOUNT [0]")
+
+# HELP DESK 
 
 def printRules():
     print("rules")
@@ -46,6 +49,8 @@ def printHelpDesk():
     else:
         print("Invalid option")
 
+# CELESTIAL BAR 
+
 def getRandomDrinks():
     drink_len = len(CELESTIAL_BAR_MENU_OPTIONS)
     rand_drinks = random.sample(range(drink_len), 4)
@@ -62,6 +67,7 @@ def enterCelestialBar(username):
         keyboard_count_str = str(keyboard_count)
         drink_name, drink_price = CELESTIAL_BAR_MENU_OPTIONS[num]
         print(f"{drink_name}: {drink_price} AB [{keyboard_count_str}]")
+        print("\n")
         keyboard_count += 1
     function_stack.append(enterCelestialBar)
     chosen_drink = get_input("What will you be having tonight?")
