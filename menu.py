@@ -85,3 +85,11 @@ def buyDrink(drink, username):
         update_user_astrobucks(c, username, curr_astrobucks - drink_price)
         print(get_user_data(c, ASTROBUCKS, username))
     get_input("esc to return")
+
+def games_table(username):
+    print("games table")
+
+
+
+
+

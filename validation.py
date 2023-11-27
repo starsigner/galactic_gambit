@@ -34,4 +34,3 @@ def errorHandlePassword(password):
        print(NUMERIC_CHAR_PASSWORD_ERROR)
        return True
    return False
-
